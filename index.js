@@ -25,8 +25,6 @@ const generateHTML = (data) =>
 </body>
 </html>`;
 
-
-
 //needed inputs for manager: 
 //name, employee id, email, office number
 
@@ -55,6 +53,11 @@ inquirer
 
 //needed inputs for engineer:
 // name, ID, email, github username & return to menu
+{
+    type: 'input',
+    name: 'name',
+    message: 'Enter name of engineer:',
+  },
     {
       type: 'input',
       name: 'github',
@@ -68,9 +71,29 @@ inquirer
 
     //needed inputs for intern:
     //name, id, email school & return to menu
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Enter name of intern:',
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'Enter id:',
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'Enter email:',
+      },
+      {
+        type: 'input',
+        name: 'school',
+        message: 'Enter school:',
+      },
 
   ])
-  .then((answers) => {
+  .then((data) => {
     const htmlPageContent = generateHTML(data);
 
     fs.writeFileSync('index.html', htmlPageContent, (err) =>
