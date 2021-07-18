@@ -1,16 +1,5 @@
-const inquirer = require('inquirer');
 const fs = require('fs');
-
-//does this look like it should??
-const employee = function (text) {
-  if (typeof text !== 'string' || !text.trim().length) {
-    throw new Error("Expected parameter 'text' to be a non empty string");
-  }
-  this.text = text;
-};
-module.exports = employee;
-
-//ignore all of this for now 
+const inquirer = require('inquirer');
 
 // const generateHTML = (data) =>
 //   `<!DOCTYPE html>
@@ -19,17 +8,21 @@ module.exports = employee;
 //   <meta charset="UTF-8">
 //   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 //   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-//   <title>Document</title>
+//   <title>Team Profile Generator</title>
 // </head>
 // <body>
-//   <div class="jumbotron jumbotron-fluid">
+// <div class="card">
 //   <div class="container">
-//     <h1 class="display-4">Hi! My name is ${data.get.name}</h1>
-//     <p class="lead">I am from ${data.get.location}.</p>
+//     <h1 class="title">My Team</></h1>
+
+//     <h1 class="card-manager">${data.name}</h1>
 //     <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
+//     <p class="lead"> ${data.id}.</p>
+//     <p class="lead"> ${data.email}.</p>
 //     <ul class="list-group">
-//       <li class="list-group-item">My GitHub username is ${data.get.github}</li>
-//       <li class="list-group-item">LinkedIn: ${data.get.linkedin}</li>
+//     <li class="list-group-item">My GitHub username is ${data.getName()}</li>
+//       <li class="list-group-item">My GitHub username is ${data.getEmail()}</li>
+//       <li class="list-group-item">LinkedIn: ${data.getRole()}</li>
 //     </ul>
 //   </div>
 // </div>
@@ -39,8 +32,8 @@ module.exports = employee;
 //needed inputs for manager: 
 //name, employee id, email, office number
 
-inquirer
-  .prompt([
+const getProfileInfo = () => {
+  return inquirer.prompt([
     {
       type: 'input',
       name: 'name',
@@ -62,13 +55,13 @@ inquirer
       message: 'Enter office number:',
     },
 
-//needed inputs for engineer:
-// name, ID, email, github username & return to menu
-{
-    type: 'input',
-    name: 'name',
-    message: 'Enter name of engineer:',
-  },
+    //needed inputs for engineer:
+    // name, ID, email, github username & return to menu
+    {
+      type: 'input',
+      name: 'name',
+      message: 'Enter name of engineer:',
+    },
     {
       type: 'input',
       name: 'github',
@@ -83,37 +76,66 @@ inquirer
     //needed inputs for intern:
     //name, id, email school & return to menu
     {
-        type: 'input',
-        name: 'name',
-        message: 'Enter name of intern:',
-      },
-      {
-        type: 'input',
-        name: 'id',
-        message: 'Enter id:',
-      },
-      {
-        type: 'input',
-        name: 'email',
-        message: 'Enter email:',
-      },
-      {
-        type: 'input',
-        name: 'school',
-        message: 'Enter school:',
-      },
-
-  ])
-  .then((data) => {
-    const htmlPageContent = generateHTML(data);
+      type: 'input',
+      name: 'name',
+      message: 'Enter name of intern:',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'Enter id:',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter email:',
+    },
+    {
+      type: 'input',
+      name: 'school',
+      message: 'Enter school:',
+    },
+  ]).then(function (data) {
+    let HTMLContent = generateHTML(data)
+    const filePath = "index.html";
+    fs.writeFileSync(filePath, HTMLContent)
   })
-    .catch(function (error) {
+    .then(function () {
+      console.log("Success!");
+  })
+  .catch(function (error) {
       console.log(error);
   })
+}
+getProfileInfo()
+  const employee = function (text) {
+    if (typeof text !== 'string' || !text.trim().length) {
+      throw new Error("Expected parameter 'text' to be a non empty string");
+      this.text = text;
+    };
+    module.exports = employee;
 
-  //do I need this??
-    fs.writeFileSync('index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created new profile!')
-  );
+    const engineer = {
+      name: "John",
+      id: 1111,
+      email: 'noemail@email.com',
+      role: 'engineer',
+      getName: function () {
+        return this.name + " " + this.id + this.email;
+      },
+      getId: function () {
+        return this.id;
+      },
+      getEmail: function () {
+        return this.email;
+      },
+      getRole: function () {
+        return employee;
+      },
+    }
+  };
+
+
+
 
 
