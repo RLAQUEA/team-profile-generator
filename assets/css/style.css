@@ -1,7 +1,5 @@
-/* this is the card to create the Manager */
 
-
-
+/* Card */
 
 * .card {
     display: flex;
@@ -21,6 +19,8 @@
 
 *
 
+/* Manager Card */
+
 .card-manager {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -36,7 +36,7 @@
   }
 
 
-  /* this is the card to create the Engineer */
+  /* Engineer Card */
 .card-engineer {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -51,7 +51,7 @@
     padding: 2px 16px;
   }
 
-    /* this is the card to create the Intern */
+    /* Intern Card */
 .card-intern {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;

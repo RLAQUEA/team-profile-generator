@@ -1,37 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-// const generateHTML = (data) =>
-//   `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-//   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-//   <title>Team Profile Generator</title>
-// </head>
-// <body>
-// <div class="card">
-//   <div class="container">
-//     <h1 class="title">My Team</></h1>
-
-//     <h1 class="card-manager">${data.name}</h1>
-//     <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-//     <p class="lead"> ${data.id}.</p>
-//     <p class="lead"> ${data.email}.</p>
-//     <ul class="list-group">
-//     <li class="list-group-item">My GitHub username is ${data.getName()}</li>
-//       <li class="list-group-item">My GitHub username is ${data.getEmail()}</li>
-//       <li class="list-group-item">LinkedIn: ${data.getRole()}</li>
-//     </ul>
-//   </div>
-// </div>
-// </body>
-// </html>`;
 
 //needed inputs for manager: 
 //name, employee id, email, office number
-
 const getProfileInfo = () => {
   return inquirer.prompt([
     {
@@ -55,8 +27,11 @@ const getProfileInfo = () => {
       message: 'Enter office number:',
     },
 
-    //needed inputs for engineer:
+   
+
+   //needed inputs for engineer:
     // name, ID, email, github username & return to menu
+
     {
       type: 'input',
       name: 'name',
@@ -75,6 +50,7 @@ const getProfileInfo = () => {
 
     //needed inputs for intern:
     //name, id, email school & return to menu
+
     {
       type: 'input',
       name: 'name',
@@ -108,32 +84,81 @@ const getProfileInfo = () => {
   })
 }
 getProfileInfo()
-  const employee = function (text) {
-    if (typeof text !== 'string' || !text.trim().length) {
-      throw new Error("Expected parameter 'text' to be a non empty string");
-      this.text = text;
-    };
-    module.exports = employee;
 
-    const engineer = {
-      name: "John",
-      id: 1111,
-      email: 'noemail@email.com',
-      role: 'engineer',
-      getName: function () {
-        return this.name + " " + this.id + this.email;
-      },
-      getId: function () {
-        return this.id;
-      },
-      getEmail: function () {
-        return this.email;
-      },
-      getRole: function () {
-        return employee;
-      },
-    }
-  };
+
+//Employee Profile Section
+class Employee { 
+  constructor(name, id, email) {
+    this.name = name;
+    this.id = id;
+    this.email = email;
+  }
+  getName() {
+    return this.name;
+  }
+  getId() {
+    return this.id;
+  }
+  getEmail() {
+    return this.email;
+  }
+  getRole() {
+    return "Employee";
+  }
+}
+module.exports = Employee;
+
+//Manager Profile Section
+class Manager extends Employee {
+  constructor(name, id, email, officeNumber) {
+    super(name, id, email);
+    this.officeNumber = officeNumber;
+  }
+  getRole() {
+    return "Manager";
+  }
+}
+module.exports = Manager;
+
+//Engineer Profile Section
+const Employee = require("./Employee");
+​
+class Engineer extends Employee {
+  constructor(name, id, email, github) {
+    super(name, id, email);
+    this.github = github;
+  }
+  getGithub() {
+    return this.github;
+  }
+  getRole() {
+    return "Engineer";
+  }
+}
+module.exports = Engineer;
+
+//Intern Profile Section
+class Intern extends Employee {
+  constructor(name, id, email, school) {
+    super(name, id, email);
+    this.school = school;
+  }
+​  getSchool() {
+    return this.school;
+  }  
+  getRole() {
+    return "Intern";
+  }  
+}
+module.exports = Engineer;
+
+
+
+
+
+
+
+
 
 
 
