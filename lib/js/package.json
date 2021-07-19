@@ -1,0 +1,20 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "Node.js application that generates a team, which includes a manager profile, an engineer, and an intern\" ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RLAQUEA/team-profile-generator"
+  },
+  "keywords": [
+    "Node",
+    "jest",
+    "inquirer"
+  ],
+  "author": "Rachel LaQuea",
+  "license": "ISC"
+}
