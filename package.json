@@ -4,7 +4,7 @@
   "description": "Node.js application that generates a team, which includes a manager profile, an engineer, and an intern\" ",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
     "inquirer"
   ],
   "author": "Rachel LaQuea",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
 }
