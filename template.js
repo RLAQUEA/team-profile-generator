@@ -2,66 +2,71 @@
 
 const generateHTML = (data) => {
   function newMgr(data) {
-    return `<div class="card-manager" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    return `<div class="mx-auto card-group border-dark mb-3" style="width: 18rem;">
+    <span class="border">
     <div class="card-body">
       <h5 class="card-title text-light bg-primary">${data.name}</h5>
-      <p class="card-text">${data.id}</p>
-      <p class="card-text">${data.email}</p>
-    <p class="list-group-item">My email is ${data.getEmail()}</p> 
-    <p class="list-group-item">Office number: ${data.officeNumber}</p>
-    <p class="list-group-item">Role: ${data.getRole()}</p>
-  </ul>`
+      <h4 class="card-title text-light bg-primary">${data.getRole()}</h4>
+      <p class="list-group-item">${data.id}</p>
+      <p class="list-group-item">${data.email}</p>
+      <p class="list-group-item">Email: ${data.getEmail()}</p> 
+      <p class="list-group-item">Office number: ${data.officeNumber}</p>
+  </ul>
+  </div>
+ </span>
+  </div>`
   };
 
   // Engineer Card
   const newEngineer = (data) => {
-    return `<div class="card-engineer" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    return `<div class=" mx-auto card-group border-dark mb-3" style="width: 18rem;">
+    <span class="border">
     <div class="card-body">
       <h5 class="card-title text-light bg-primary">${data.name}</h5>
-      <p class="card-text">${data.id}</p>
-      <p class="card-text">${data.email}</p> 
-      <p class="list-group-item">My email is ${data.getEmail()}</p>
-      <p class="list-group-item">My GitHub username is <a href=“https://github.com/${data.getGithub()}">${data.getGithub()}</a></p>
-      <p class="list-group-item">Role: ${data.getRole()}</p>
+      <h4 class="card-title text-light bg-primary">${data.getRole()} </h4>
+      <p class="list-group-item">${data.id}</p>
+      <p class="list-group-item">${data.email}</p> 
+      <p class="list-group-item">Email: ${data.getEmail()}</p>
+      <p class="list-group-item">GitHub username: <a href=“https://github.com/${data.getGithub()}">${data.getGithub()}</a></p>
     </div>
+    </span>
   </div>`
   }
 
   // Intern Card
   const newIntern = (data) => {
-    return `<div class="card-intern" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    return `<div class=" mx-auto card-group border-dark mb-3" style="width: 18rem;">
+    <span class="border">
     <div class="card-body">
       <h5 class="card-title text-light bg-primary">${data.name}</h5>
-      <p class="card-text">${data.id}</p>
-      <p class="card-text">${data.email}</p>
-      <p class="list-group-item">My email is ${data.getEmail()}</p>
-      <p class="list-group-item">Role: ${data.getRole()}</p>
+      <h4 class="card-title text-light bg-primary">${data.getRole()}</h4>
+      <p class="list-group-item">${data.id}</p>
+      <p class="list-group-item">${data.email}</p>
+      <p class="list-group-item">Email: ${data.getEmail()}</p>
       <p class="list-group-item">School: ${data.getSchool()}</p>
     </div>
+    </span>
   </div>`
   }
 
   //this function is run once cards are created
   const html = [];
- html.push(data
-        .filter(employee => employee.getRole() === "Manager")
-        .map(manager => newMgr(manager))
-        .join("")
-    );
-    html.push(data
-      .filter(employee => employee.getRole() === "Engineer")
-      .map(engineer => newEngineer(engineer))
-      .join("")
-  );html.push(data
+  html.push(data
+    .filter(employee => employee.getRole() === "Manager")
+    .map(manager => newMgr(manager))
+    .join("")
+  );
+  html.push(data
+    .filter(employee => employee.getRole() === "Engineer")
+    .map(engineer => newEngineer(engineer))
+    .join("")
+  ); html.push(data
     .filter(employee => employee.getRole() === "Intern")
     .map(intern => newIntern(intern))
     .join("")
-);
-    //add Manager and Intern
-     return html.join("");
+  );
+  //add Manager and Intern
+  return html.join("");
 }
 
 module.exports = data => {
@@ -74,11 +79,11 @@ module.exports = data => {
   <title>Team Profile Generator</title>
   </head>
   <body>
-  <div class="card-body">
-  <div class="container">
-    <h1 class="title text-center text-light bg-danger">My Team</></h1>
+  <div class="card">
+  <h1 class="title text-center text-light bg-danger">My Team</></h1>
+  <div class="container display-flex justify-content flex-direction row">
+    
     ${generateHTML(data)}
-</div>
 </div>
 </div>
 </body>
