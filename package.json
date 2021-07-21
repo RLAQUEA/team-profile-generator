@@ -18,6 +18,7 @@
   "author": "Rachel LaQuea",
   "license": "ISC",
   "dependencies": {
+    "inquirer": "^8.1.2",
     "jest": "^27.0.6"
   }
 }

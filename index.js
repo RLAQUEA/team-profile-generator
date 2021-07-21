@@ -18,7 +18,7 @@ function appMenu() {
         type: 'list',
         name: 'userInput',
         message: 'What employee would you like to create?',
-        choices: ["Engineer", "Manager", "Intern", "No more employees!"]
+        choices: ["Engineer", "Manager", "Intern", "Finished adding employees"]
       },
 
     ]).then(response => {
@@ -135,12 +135,6 @@ function appMenu() {
     let HTMLContent = generateHTML(teamMembers)
     const filePath = "index.html";
     fs.writeFileSync(filePath, HTMLContent, "utf-8")
-  // ]).then(function () {
-  //       console.log("Success!");
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
   }
   createTeam();
 }
