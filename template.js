@@ -5,8 +5,10 @@ const generateHTML = (data) => {
     return `<div class="mx-auto card-group border-dark mb-3" style="width: 18rem;">
     <span class="border">
     <div class="card-body">
-      <h5 class="card-title text-light bg-primary">${data.name}</h5>
-      <h4 class="card-title text-light bg-primary">${data.getRole()}</h4>
+      <h5 class="card-title text-light bg-primary">${data.name}<br>
+      <span style="font-size: 1em; margin-right:1em;">
+<i class="fas fa-coffee"></i>${data.getRole()}</h5>
+</span> 
       <p class="list-group-item">${data.id}</p>
       <p class="list-group-item">${data.email}</p>
       <p class="list-group-item">Email: ${data.getEmail()}</p> 
@@ -22,8 +24,10 @@ const generateHTML = (data) => {
     return `<div class=" mx-auto card-group border-dark mb-3" style="width: 18rem;">
     <span class="border">
     <div class="card-body">
-      <h5 class="card-title text-light bg-primary">${data.name}</h5>
-      <h4 class="card-title text-light bg-primary">${data.getRole()} </h4>
+      <h5 class="card-title text-light bg-primary">${data.name}<br>
+      <span style="font-size: 1em; margin-right:1em;">
+      <i class="fas fa-glasses"></i>
+    </span>${data.getRole()}</h5>
       <p class="list-group-item">${data.id}</p>
       <p class="list-group-item">${data.email}</p> 
       <p class="list-group-item">Email: ${data.getEmail()}</p>
@@ -38,8 +42,10 @@ const generateHTML = (data) => {
     return `<div class=" mx-auto card-group border-dark mb-3" style="width: 18rem;">
     <span class="border">
     <div class="card-body">
-      <h5 class="card-title text-light bg-primary">${data.name}</h5>
-      <h4 class="card-title text-light bg-primary">${data.getRole()}</h4>
+      <h5 class="card-title text-light bg-primary">${data.name}<br>
+      <span style="font-size: 1em; margin-right:1em;">
+      <i class="fas fa-user-graduate"></i>
+    </span>${data.getRole()}</h5>
       <p class="list-group-item">${data.id}</p>
       <p class="list-group-item">${data.email}</p>
       <p class="list-group-item">Email: ${data.getEmail()}</p>
@@ -76,6 +82,7 @@ module.exports = data => {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <title>Team Profile Generator</title>
   </head>
   <body>
