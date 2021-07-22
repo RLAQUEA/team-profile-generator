@@ -4,14 +4,13 @@ const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
-const generateHTML = require("./template")
-
+const generateHTML = require("./src/template")
+//Empty array ready for user input, which creates team member profiles
 const teamMembers = [];
 
-//Function to run chain of inquirer prompts used to create profiles based on user input 
-
+//Main function to trigger the others to run chain of inquirer prompts
 function appMenu() {
-
+//Function to create Employee profile based on user input, which then is extended using other classes
   function createTeam() {
     inquirer.prompt([
       {
@@ -24,7 +23,7 @@ function appMenu() {
     ]).then(response => {
       switch (response.userInput) {
         case "Engineer":
-          getEngInfo();//will run if engineer 
+          getEngInfo();
           break;
         case "Manager":
           getMgrInfo();
@@ -32,11 +31,12 @@ function appMenu() {
         case "Intern":
           getInternInfo();
         default:
-          constructTeam();//default when done adding members ie when i answer no more team members, fire renderTeam()
+          constructTeam();
       }
     });
   }
 
+  //Function to create Manager profile based on user input
   // //Manager Profile Sections
   //name, employee id, email, office number
   const getMgrInfo = () => {
@@ -61,6 +61,7 @@ function appMenu() {
         name: 'number',
         message: 'Enter office number:',
       },
+      //Response will return all information from inquirer prompts to create a new instance of a manager
     ]).then(response => {
       const manager = new Manager(response.name, response.id, response.email, response.number);
       teamMembers.push(manager)
@@ -68,6 +69,7 @@ function appMenu() {
     });
   }
 
+  //Function to create Engineer profile based on user input
   //Engineer Profile Section:
   //name, ID, email, github username, linkedin & return to menu
   const getEngInfo = () => {
@@ -92,7 +94,7 @@ function appMenu() {
         name: 'email',
         message: 'Enter email:',
       },
-
+      //Response will return all information from inquirer prompts to create a new instance of an engineer
     ]).then(response => {
       const engineer = new Engineer(response.name, response.id, response.email, response.github);
       teamMembers.push(engineer)
@@ -100,6 +102,7 @@ function appMenu() {
     });
   }
 
+  //Function to create Intern profile based on user input
   //Intern Section
   //name, id, email school & return to menu
   const getInternInfo = () => {
@@ -124,22 +127,23 @@ function appMenu() {
         name: 'school',
         message: 'Enter school:',
       }
-
+//Response will return all information from inquirer prompts to create a new instance of an intern
     ]).then(function (data) {
       const intern = new Intern(data.name, data.id, data.email, data.school)
       teamMembers.push(intern)
       createTeam();
     })
   }
+  //Function that creates the team based on user input and writes it to an html file 
   function constructTeam() {
     let HTMLContent = generateHTML(teamMembers)
-    const filePath = "index.html";
+    const filePath = "./dist/index.html";
     fs.writeFileSync(filePath, HTMLContent, "utf-8")
   }
   createTeam();
 }
 
-
+//calls main function 
 appMenu();
 
 

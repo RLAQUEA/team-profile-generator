@@ -1,4 +1,4 @@
-//Manager Card
+//Manager Card Template
 
 const generateHTML = (data) => {
   function newMgr(data) {
@@ -19,7 +19,7 @@ const generateHTML = (data) => {
   </div>`
   };
 
-  // Engineer Card
+  // Engineer Card Template
   const newEngineer = (data) => {
     return `<div class=" mx-auto card-group border-dark mb-3" style="width: 18rem;">
     <span class="border">
@@ -37,9 +37,9 @@ const generateHTML = (data) => {
   </div>`
   }
 
-  // Intern Card
+  // Intern Card Template
   const newIntern = (data) => {
-    return `<div class=" mx-auto card-group border-dark mb-3" style="width: 18rem;">
+    return `<div class="mx-auto card-group border-dark mb-3" style="width: 18rem;">
     <span class="border">
     <div class="card-body">
       <h5 class="card-title text-light bg-primary">${data.name}<br>
@@ -55,7 +55,7 @@ const generateHTML = (data) => {
   </div>`
   }
 
-  //this function is run once cards are created
+  //Function will push all data to html file & will run once cards are created
   const html = [];
   html.push(data
     .filter(employee => employee.getRole() === "Manager")
@@ -71,7 +71,6 @@ const generateHTML = (data) => {
     .map(intern => newIntern(intern))
     .join("")
   );
-  //add Manager and Intern
   return html.join("");
 }
 
@@ -89,8 +88,7 @@ module.exports = data => {
   <div class="card">
   <h1 class="title text-center text-light bg-danger">My Team</></h1>
   <div class="container display-flex justify-content flex-direction row">
-    
-    ${generateHTML(data)}
+     ${generateHTML(data)}
 </div>
 </div>
 </body>
