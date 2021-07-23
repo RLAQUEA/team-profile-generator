@@ -1,0 +1,18 @@
+
+/* Card Styling */
+
+.card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: crimson;
+    color: white;
+    text-align: center;
+}
